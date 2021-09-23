@@ -1,0 +1,1 @@
+var trustlyApp = angular.module('trustlyApp', []);

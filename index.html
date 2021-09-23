@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br" ng-app="trustlyApp">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trustly - WorldClockAPI Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container p-5" ng-controller="worldClockAPIController as vm" ng-init="vm.load()">
+        <div class="accordion" id="accordion">
+            <div class="accordion-item" ng-repeat="timeZone in vm.worldClockList">
+                <h2 class="accordion-header" id="heading-{{$index}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+                        {{timeZone.result.timeZoneName}} - {{timeZone.result.formattedDate}}
+                    </button>
+                </h2>
+                <div id="collapse-{{$index}}" class="accordion-collapse collapse" aria-labelledby="heading-{{$index}}"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <pre>{{timeZone | json}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/services/timeZoneService.js"></script>
+    <script src="app/controllers/worldClockAPI.controller.js"></script>
+</body>
+</html>
